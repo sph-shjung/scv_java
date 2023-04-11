@@ -1,0 +1,75 @@
+<settings>
+	<!-- <gdalexe>C:/Program Files/GDAL/gdal_translate.exe</gdalexe>
+	<gdalwarpexe>C:/Program Files/GDAL/gdalwarp.exe</gdalwarpexe>
+	<gdalogrexe>C:/Program Files/GDAL/ogr2ogr.exe</gdalogrexe>
+	-->
+	<gdalexe>/root/anaconda3/bin/gdal_translate</gdalexe>
+	<gdalwarpexe>gdalwarp</gdalwarpexe>
+	<gdalogrexe>/root/anaconda3/bin/ogr2ogr</gdalogrexe>
+	<image>
+		<iServerUrl>http://localhost:8090/iserver</iServerUrl>
+		<datasetName>IMAGE_DATA</datasetName>
+		<workspace>f:\image.smwu</workspace>
+		<datasource>E:\서울대\SPH\udb\image</datasource>
+	</image>
+	<vector>
+		<iServerUrl>http://localhost:8090/iserver</iServerUrl>
+		<datasetName>VECTOR_DATA</datasetName>
+		<workspace>E:\서울대\SPH\workspace\vector.smwu</workspace>
+		<datasource>E:\서울대\SPH\udb\vector</datasource>
+	</vector>
+	<satellite>
+		<iServerUrl>http://localhost:8090/iserver</iServerUrl>
+		<datasetName>SATELLITE_DATA</datasetName>
+		<serviceName>SATELLITE_SERVICE</serviceName>
+		<workspace>E:\서울대\SPH\workspace</workspace>
+		<datasource>E:\서울대\SPH\udb\satellite</datasource>
+		<deletePeriods>
+			<period>
+				<name>HI8</name>
+				<hour>1</hour>
+			</period>
+			<period>
+				<name>G2A</name>
+				<hour>420</hour>
+			</period>
+			<period>
+				<name>G2B</name>
+				<hour>420</hour>
+			</period>
+			<period>
+				<name>OTHER</name>
+				<hour>8760</hour>
+			</period>
+		</deletePeriods>
+	</satellite>
+
+	<dbPath>D:\서울대\udbx\SATELLITEDATA.udbx</dbPath>
+	<directory>directory</directory>
+	<maxThreadCount>20</maxThreadCount>
+	<postgre>
+		<server>localhost</server>
+		<port>5432</port>
+		<id>sphinfo</id>
+		<password>sphinfo</password>
+		<name>sphinfo</name>
+		<tablename>UPLOADED_DATA</tablename>
+		<weathertablename>WEATHER_DATA</weathertablename>
+		<servicetablename>SERVICE_LIST</servicetablename>
+		<disaster>DISASTER</disaster>
+		<disastercount>6</disastercount>
+		<disasterquery>type_order</disasterquery>
+		<!-- 
+			새로운 서버에 설치시 publishurl 값 변경
+			1. lumir : 211.169.234.109
+			2. sph Demo : demo.sphinfo.co.kr
+			3. 서울대[AWS]: 3.35.183.237
+			4. 서울대[운영]: scv.snu.ac.kr
+		-->
+		<publishurl>211.169.234.109</publishurl>
+	</postgre>
+	<iServer>
+		<user>supermap</user>
+		<password>supermap12!@</password>
+	</iServer>
+</settings>

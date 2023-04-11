@@ -1,0 +1,176 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>sph.supermap</groupId>
+	<artifactId>isc</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>isc</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<encoding>UTF-8</encoding>
+	</properties>
+
+	<repositories>
+		<!-- 
+		<repository>
+			<id>iserver</id>
+			<name>iserver</name>
+			<url>https://maven.supermap.io/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		-->
+		<repository>
+			<id>alimaven</id>
+			<name>aliyun maven</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- 
+    <dependency>
+    	<groupId>com.supermap</groupId>
+    	<artifactId>com.supermap.mapping</artifactId>
+    	<version>10.1.2-19822</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.supermap</groupId>
+    	<artifactId>com.supermap.data</artifactId>
+    	<version>10.1.2-19822</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.supermap</groupId>
+    	<artifactId>com.supermap.data.conversion</artifactId>
+    	<version>10.1.2-19822</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.supermap</groupId>
+    	<artifactId>com.supermap.chart</artifactId>
+    	<version>10.1.2-19822</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.supermap</groupId>
+    	<artifactId>com.supermap.layout</artifactId>
+    	<version>10.1.2-19822</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.supermap</groupId>
+    	<artifactId>com.supermap.analyst.spatialanalyst</artifactId>
+    	<version>10.1.2-19822</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.google.code.gson</groupId>
+    	<artifactId>gson</artifactId>
+    	<version>2.9.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20220320</version>
+	</dependency>
+    
+    <dependency>
+		<groupId>log4j</groupId>
+  		<artifactId>log4j</artifactId>
+  		<version>1.2.14</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.thoughtworks.xstream</groupId>
+	    <artifactId>xstream</artifactId>
+	    <version>1.4.17</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>io.oss84.geotools</groupId>
+		<artifactId>gt-main</artifactId>
+		<version>24.2</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.locationtech.jts</groupId>
+	    <artifactId>jts-core</artifactId>
+	    <version>1.18.2</version>
+	</dependency>
+	-->
+	</dependencies>
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<useFile>false</useFile>
+					<disableXmlReport>true</disableXmlReport>
+					<!-- If you have classpath issue like NoDefClassError,... -->
+					<!-- useManifestOnlyJar>false</useManifestOnlyJar -->
+					<includes>
+						<include>**/*Test.*</include>
+						<include>**/*Suite.*</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>Startup</mainClass>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+						<manifestEntries>
+							<Specification-Vendor>Sun Microsystems, Inc.</Specification-Vendor>
+							<Implementation-Vendor>Sun Microsystems, Inc.</Implementation-Vendor>
+						</manifestEntries>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>create-my-bundle</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
